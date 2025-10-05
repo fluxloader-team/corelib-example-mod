@@ -4,7 +4,7 @@ corelib.blocks.register({
 	name: "Wedge Block",
 	description: "A simple yet versatile wedge block",
 	shape: "[10,0,0,0],[3,10,0,0],[3,3,0,0],[3,0,0,0]",
-	angles: "[0]",
+	angles: [0],
 	imagePath: "wedge",
 });
 
@@ -12,7 +12,7 @@ corelib.blocks.registerVariant({
 	parentId: "wedge",
 	suffix: "Left",
 	shape: "[0,0,0,9],[0,0,9,3],[0,0,3,3],[0,0,0,3]",
-	angles: "[-180,180]",
+	angles: [-180,180],
 	imagePath: "wedgeLeft",
 });
 
@@ -20,7 +20,7 @@ corelib.blocks.registerVariant({
 	parentId: "wedge",
 	suffix: "Up",
 	shape: "[3,3,3,3],[0,3,3,0],[0,0,0,0],[0,0,0,0]",
-	angles: "[90]",
+	angles: [90],
 	imagePath: "wedgeUp",
 });
 
@@ -28,16 +28,16 @@ corelib.blocks.registerVariant({
 	parentId: "wedge",
 	suffix: "Down",
 	shape: "[0,0,0,0],[0,0,0,0],[0,9,10,0],[9,3,3,10]",
-	angles: "[-90]",
+	angles: [-90],
 	imagePath: "wedgeDown",
 });
 
 corelib.tech.register({
 	id: "testTech1",
-	name: "Test Tech 1",
-	description: "A test tech for example and testing purposes.",
+	name: "Wedge",
+	description: "A test tech which unlocks the test block, wedge.",
 	cost: 1,
-	unlocks: {},
+	unlocks: {structures: ["d.wedge"]},
 });
 
 corelib.tech.register({

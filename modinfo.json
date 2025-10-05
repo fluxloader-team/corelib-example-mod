@@ -8,5 +8,6 @@
 	"dependencies": {},
 	"tags": [],
 	"electronEntrypoint": "entry.electron.js",
+	"workerEntrypoint": "entry.worker.js",
 	"gameEntrypoint": "entry.game.js"
 }

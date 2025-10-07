@@ -70,7 +70,7 @@ globalThis.blockPortalConfigUI = function ({ extra }) {
 					extra.set(i);
 				},
 				className: "text-center text-black",
-			})
-		)
+			}),
+		),
 	);
 };

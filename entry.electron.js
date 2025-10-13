@@ -1,3 +1,12 @@
+//registerBasicRecipe(topInput,bottomInput,topOutput,bottomOutput,whetherToAddBothWays)
+corelib.elements.registerBasicRecipe("Sand" , "Petalium", "Redsand", "Redsand")
+corelib.elements.registerBasicRecipe("WetSand", "Petalium", "Sand", "Empty", false) 
+//registerPressRecipe(inputElement,arrayOfOutputThenChanceArrays,requiredVelocityToTranform(optional))
+corelib.elements.registerPressRecipe("Gold", [["Sand",1],["Water",0.5],["Sandium",1]])
+corelib.elements.registerPressRecipe("Sandium", [["Gold",1]],5)
+//registerConveyorBeltIgnores(elementToNotMove)
+corelib.elements.registerConveyorBeltIgnores("Sand")
+
 corelib.blocks.register({
 	sourceMod: "testmod",
 	id: "wedge",

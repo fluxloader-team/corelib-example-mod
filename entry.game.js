@@ -1,3 +1,5 @@
+// ---------------------------------------- SIMULATION ----------------------------------------
+
 const blockSpawns = [
 	["Pipe", 40, 92, 0, 6],
 	["Pipe", 40, 96, 1, 18],
@@ -41,17 +43,20 @@ fluxloaderAPI.events.on("fl:scene-loaded", (scene) => {
 	};
 });
 
-// `Portal` must match the block id
-globalThis.blockPortalPreConfigUI = function ({ state }) {
+// ---------------------------------------- BLOCKS ----------------------------------------
+
+function blockPortalPreConfigUI({ state }) {
+	// `Portal` must match the block id
 	// useState will trigger a UI reload when set is called with a new value
 	let [val, set] = React.useState(state.store.options.portalConfig?.channel ?? 1);
+
 	// Data returned here is passed into `blockIDConfigUI` under `extra`
 	// And is also used to determine width and height of configUI
 	return { width: "200px", height: "60px", val, set };
 };
 
-// `Portal` must match the block id
-globalThis.blockPortalConfigUI = function ({ extra }) {
+function blockPortalConfigUI({ extra }) {
+	// `Portal` must match the block id
 	return React.createElement(
 		"div",
 		{},
@@ -74,3 +79,6 @@ globalThis.blockPortalConfigUI = function ({ extra }) {
 		),
 	);
 };
+
+globalThis.blockPortalPreConfigUI = blockPortalPreConfigUI;
+globalThis.blockPortalConfigUI = blockPortalConfigUI;

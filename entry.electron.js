@@ -1,11 +1,16 @@
-//registerBasicRecipe(topInput,bottomInput,topOutput,bottomOutput,whetherToAddBothWays)
+// ---------------------------------------- ELEMENTS ----------------------------------------
+
 corelib.elements.registerBasicRecipe("Sand" , "Petalium", "Redsand", "Redsand")
 corelib.elements.registerBasicRecipe("WetSand", "Petalium", "Sand", "Empty", false) 
-//registerPressRecipe(inputElement,arrayOfOutputThenChanceArrays,requiredVelocityToTranform(optional))
 corelib.elements.registerPressRecipe("Gold", [["Sand",1],["Water",0.5],["Sandium",1]])
 corelib.elements.registerPressRecipe("Sandium", [["Gold",1]],5)
-//registerConveyorBeltIgnores(elementToNotMove)
 corelib.elements.registerConveyorBeltIgnores("Sand")
+
+//registerBasicRecipe(topInput,bottomInput,topOutput,bottomOutput,whetherToAddBothWays)
+//registerPressRecipe(inputElement,arrayOfOutputThenChanceArrays,requiredVelocityToTranform(optional))
+//registerConveyorBeltIgnores(elementToNotMove)
+
+// ---------------------------------------- BLOCKS ----------------------------------------
 
 corelib.blocks.register({
 	sourceMod: "testmod",
@@ -14,57 +19,28 @@ corelib.blocks.register({
 	description: "A simple yet versatile wedge block",
 	shape: "[10,0,0,0],[3,10,0,0],[3,3,0,0],[3,0,0,0]",
 	angles: [0],
-	imagePath: "wedge",
+	imagePath: "assets/wedge",
 });
-
 corelib.blocks.registerVariant({
 	parentId: "wedge",
 	suffix: "Left",
 	shape: "[0,0,0,9],[0,0,9,3],[0,0,3,3],[0,0,0,3]",
 	angles: [-180, 180],
-	imagePath: "wedgeLeft",
+	imagePath: "assets/wedgeLeft",
 });
-
 corelib.blocks.registerVariant({
 	parentId: "wedge",
 	suffix: "Up",
 	shape: "[3,3,3,3],[0,3,3,0],[0,0,0,0],[0,0,0,0]",
 	angles: [90],
-	imagePath: "wedgeUp",
+	imagePath: "assets/wedgeUp",
 });
-
 corelib.blocks.registerVariant({
 	parentId: "wedge",
 	suffix: "Down",
 	shape: "[0,0,0,0],[0,0,0,0],[0,9,10,0],[9,3,3,10]",
 	angles: [-90],
-	imagePath: "wedgeDown",
-});
-
-corelib.tech.register({
-	id: "testTech1",
-	name: "Wedge",
-	description: "A test tech which unlocks the test block, wedge.",
-	cost: 1,
-	unlocks: { structures: ["d.wedge"] },
-});
-
-corelib.tech.register({
-	id: "testTech2",
-	name: "Test Tech 2",
-	description: "A second test technology.",
-	cost: 1e11,
-	unlocks: {},
-	parent: "testTech1",
-});
-
-corelib.tech.register({
-	id: "miscTestTech",
-	name: "Other Tech Test",
-	description: "A test tech for example and testing purposes.",
-	unlocks: {},
-	cost: 50,
-	parent: "Logistics1",
+	imagePath: "assets/wedgeDown",
 });
 
 corelib.blocks.register({
@@ -85,6 +61,34 @@ corelib.blocks.register({
 	hasConfigMenu: true,
 });
 
+// ---------------------------------------- TECH ----------------------------------------
+
+corelib.tech.register({
+	id: "testTech1",
+	name: "Wedge",
+	description: "A test tech which unlocks the test block, wedge.",
+	cost: 1,
+	unlocks: { structures: ["d.wedge"] },
+});
+corelib.tech.register({
+	id: "testTech2",
+	name: "Test Tech 2",
+	description: "A second test technology.",
+	cost: 1e11,
+	unlocks: {},
+	parent: "testTech1",
+});
+corelib.tech.register({
+	id: "miscTestTech",
+	name: "Other Tech Test",
+	description: "A test tech for example and testing purposes.",
+	unlocks: {},
+	cost: 50,
+	parent: "Logistics1",
+});
+
+// ---------------------------------------- UPGRADES ----------------------------------------
+
 corelib.upgrades.registerTab({
 	id: "portals",
 	name: "Portals",
@@ -92,13 +96,11 @@ corelib.upgrades.registerTab({
 		tech: "Portal",
 	},
 });
-
 corelib.upgrades.registerCategory({
 	tabID: "portals",
 	id: "portals",
 	name: "Portals",
 });
-
 corelib.upgrades.registerUpgrade({
 	tabID: "portals",
 	categoryID: "portals",

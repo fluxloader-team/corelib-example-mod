@@ -6,6 +6,25 @@ corelib.elements.registerPressRecipe("Gold", [["Sand",1],["Water",0.5],["Sandium
 corelib.elements.registerPressRecipe("Sandium", [["Gold",1]],5)
 corelib.elements.registerConveyorBeltIgnores("Sand")
 
+// corelib.elements.registerSoil({
+// 	id: "TestingSoil",
+//  	name: "TestingSoil",
+// 	hp: 10,
+// 	hoverText: "testing",
+// 	outputElement: "Gold",
+// 	chanceForOutput: 0.5,
+// 	colorHSL: [115, 5, 45]
+// });
+// corelib.elements.registerElement({
+//  	id: "SaltWater",
+//   	name: "SaltWater",
+//  	colors: [[71, 156, 209, 50]],
+//  	density: 110,
+//  	hoverText: "🚫",
+// 	matterType: "Liquid"
+// });
+// corelib.elements.registerPressRecipe("Sand",[["Gold",0.5],["WetSand",1]])
+// corelib.elements.registerRecipe("Sand","Spore","Gold","Water")
 //registerBasicRecipe(topInput,bottomInput,topOutput,bottomOutput,whetherToAddBothWays)
 //registerPressRecipe(inputElement,arrayOfOutputThenChanceArrays,requiredVelocityToTranform(optional))
 //registerConveyorBeltIgnores(elementToNotMove)

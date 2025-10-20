@@ -1,131 +1,149 @@
 // ---------------------------------------- ELEMENTS ----------------------------------------
 
-corelib.elements.registerBasicRecipe("Sand" , "Petalium", "Redsand", "Redsand")
-corelib.elements.registerBasicRecipe("WetSand", "Petalium", "Sand", "Empty", false) 
-corelib.elements.registerPressRecipe("Gold", [["Sand",1],["Water",0.5],["Sandium",1]])
-corelib.elements.registerPressRecipe("Sandium", [["Gold",1]],5)
-corelib.elements.registerConveyorBeltIgnores("Sand")
+if (0) {
+	corelib.elements.registerBasicRecipe("Sand" , "Petalium", "Redsand", "Redsand")
+	corelib.elements.registerBasicRecipe("WetSand", "Petalium", "Sand", "Empty", false) 
+	corelib.elements.registerPressRecipe("Gold", [["Sand",1],["Water",0.5],["Sandium",1]])
+	corelib.elements.registerPressRecipe("Sandium", [["Gold",1]],5)
+	corelib.elements.registerConveyorBeltIgnores("Sand")
 
-// corelib.elements.registerSoil({
-// 	id: "TestingSoil",
-//  	name: "TestingSoil",
-// 	hp: 10,
-// 	hoverText: "testing",
-// 	outputElement: "Gold",
-// 	chanceForOutput: 0.5,
-// 	colorHSL: [115, 5, 45]
-// });
-// corelib.elements.registerElement({
-//  	id: "SaltWater",
-//   	name: "SaltWater",
-//  	colors: [[71, 156, 209, 50]],
-//  	density: 110,
-//  	hoverText: "🚫",
-// 	matterType: "Liquid"
-// });
-// corelib.elements.registerPressRecipe("Sand",[["Gold",0.5],["WetSand",1]])
-// corelib.elements.registerRecipe("Sand","Spore","Gold","Water")
-//registerBasicRecipe(topInput,bottomInput,topOutput,bottomOutput,whetherToAddBothWays)
-//registerPressRecipe(inputElement,arrayOfOutputThenChanceArrays,requiredVelocityToTranform(optional))
-//registerConveyorBeltIgnores(elementToNotMove)
+	// corelib.elements.registerSoil({
+	// 	id: "TestingSoil",
+	//  	name: "TestingSoil",
+	// 	hp: 10,
+	// 	hoverText: "testing",
+	// 	outputElement: "Gold",
+	// 	chanceForOutput: 0.5,
+	// 	colorHSL: [115, 5, 45]
+	// });
+	// corelib.elements.registerElement({
+	//  	id: "SaltWater",
+	//   	name: "SaltWater",
+	//  	colors: [[71, 156, 209, 50]],
+	//  	density: 110,
+	//  	hoverText: "🚫",
+	// 	matterType: "Liquid"
+	// });
+	// corelib.elements.registerPressRecipe("Sand",[["Gold",0.5],["WetSand",1]])
+	// corelib.elements.registerRecipe("Sand","Spore","Gold","Water")
+	//registerBasicRecipe(topInput,bottomInput,topOutput,bottomOutput,whetherToAddBothWays)
+	//registerPressRecipe(inputElement,arrayOfOutputThenChanceArrays,requiredVelocityToTranform(optional))
+	//registerConveyorBeltIgnores(elementToNotMove)
+}
 
 // ---------------------------------------- BLOCKS ----------------------------------------
 
-corelib.blocks.register({
-	sourceMod: "testmod",
-	id: "wedge",
-	name: "Wedge Block",
-	description: "A simple yet versatile wedge block",
-	shape: "[10,0,0,0],[3,10,0,0],[3,3,0,0],[3,0,0,0]",
-	angles: [0],
-	imagePath: "assets/wedge",
-});
-corelib.blocks.registerVariant({
-	parentId: "wedge",
-	suffix: "Left",
-	shape: "[0,0,0,9],[0,0,9,3],[0,0,3,3],[0,0,0,3]",
-	angles: [-180, 180],
-	imagePath: "assets/wedgeLeft",
-});
-corelib.blocks.registerVariant({
-	parentId: "wedge",
-	suffix: "Up",
-	shape: "[3,3,3,3],[0,3,3,0],[0,0,0,0],[0,0,0,0]",
-	angles: [90],
-	imagePath: "assets/wedgeUp",
-});
-corelib.blocks.registerVariant({
-	parentId: "wedge",
-	suffix: "Down",
-	shape: "[0,0,0,0],[0,0,0,0],[0,9,10,0],[9,3,3,10]",
-	angles: [-90],
-	imagePath: "assets/wedgeDown",
-});
+if (1) {
+	corelib.blocks.register({
+		sourceMod: "corelibexamplemod",
+		id: "wedge",
+		name: "Wedge Block",
+		description: "A simple yet versatile wedge block",
+		shape: [[10,0,0,0],[3,10,0,0],[3,3,0,0],[3,0,0,0]],
+		angles: [0],
+		imagePath: "assets/wedge.png",
+		singleBuild: true,
+		default: true
+	});
+	corelib.blocks.registerVariant({
+		parentId: "wedge",
+		suffix: "Left",
+		shape: [[0,0,0,9],[0,0,9,3],[0,0,3,3],[0,0,0,3]],
+		angles: [-180, 180],
+		imagePath: "assets/wedgeLeft.png",
+		singleBuild: true,
+		default: true
+	});
+	corelib.blocks.registerVariant({
+		parentId: "wedge",
+		suffix: "Up",
+		shape: [[3,3,3,3],[0,3,3,0],[0,0,0,0],[0,0,0,0]],
+		angles: [90],
+		imagePath: "assets/wedgeUp.png",
+		singleBuild: true,
+		default: true
+	});
+	corelib.blocks.registerVariant({
+		parentId: "wedge",
+		suffix: "Down",
+		shape: [[0,0,0,0],[0,0,0,0],[0,9,10,0],[9,3,3,10]],
+		angles: [-90],
+		imagePath: "assets/wedgeDown.png",
+		singleBuild: true,
+		default: true
+	});
+}
 
-corelib.blocks.register({
-	sourceMod: "portals",
-	id: "Portal",
-	name: "Portal",
-	description: "An interdimensional portal that links two locations together.",
-	shape: [
-		[0, 0, 0, 0],
-		[0, 0, 0, 0],
-		[0, 0, 0, 0],
-		[0, 0, 0, 0],
-	],
-	angles: [0],
-	singleBuild: true,
-	// corelib will setup the configUI for you, see the game entrypoint for more info
-	// Requires some knowledge of React UIs, corelib only sets up the basic listeners but not UI content
-	hasConfigMenu: true,
-});
+if (0) {
+	corelib.blocks.register({
+		sourceMod: "portals",
+		id: "Portal",
+		name: "Portal",
+		description: "An interdimensional portal that links two locations together.",
+		shape: [
+			[0, 0, 0, 0],
+			[0, 0, 0, 0],
+			[0, 0, 0, 0],
+			[0, 0, 0, 0],
+		],
+		angles: [0],
+		singleBuild: true,
+		// corelib will setup the configUI for you, see the game entrypoint for more info
+		// Requires some knowledge of React UIs, corelib only sets up the basic listeners but not UI content
+		hasConfigMenu: true,
+	});
+}
 
 // ---------------------------------------- TECH ----------------------------------------
 
-corelib.tech.register({
-	id: "testTech1",
-	name: "Wedge",
-	description: "A test tech which unlocks the test block, wedge.",
-	cost: 1,
-	unlocks: { structures: ["d.wedge"] },
-});
-corelib.tech.register({
-	id: "testTech2",
-	name: "Test Tech 2",
-	description: "A second test technology.",
-	cost: 1e11,
-	unlocks: {},
-	parent: "testTech1",
-});
-corelib.tech.register({
-	id: "miscTestTech",
-	name: "Other Tech Test",
-	description: "A test tech for example and testing purposes.",
-	unlocks: {},
-	cost: 50,
-	parent: "Logistics1",
-});
+if (0) {
+	corelib.tech.register({
+		id: "testTech1",
+		name: "Wedge",
+		description: "A test tech which unlocks the test block, wedge.",
+		cost: 1,
+		unlocks: { structures: ["d.wedge"] },
+	});
+	corelib.tech.register({
+		id: "testTech2",
+		name: "Test Tech 2",
+		description: "A second test technology.",
+		cost: 1e11,
+		unlocks: {},
+		parent: "testTech1",
+	});
+	corelib.tech.register({
+		id: "miscTestTech",
+		name: "Other Tech Test",
+		description: "A test tech for example and testing purposes.",
+		unlocks: {},
+		cost: 50,
+		parent: "Logistics1",
+	});
+}
 
 // ---------------------------------------- UPGRADES ----------------------------------------
 
-corelib.upgrades.registerTab({
-	id: "portals",
-	name: "Portals",
-	requirement: {
-		tech: "Portal",
-	},
-});
-corelib.upgrades.registerCategory({
-	tabID: "portals",
-	id: "portals",
-	name: "Portals",
-});
-corelib.upgrades.registerUpgrade({
-	tabID: "portals",
-	categoryID: "portals",
-	id: "count",
-	name: "Portal Count",
-	description: "Increases the number of portal channels you can use.",
-	maxLevel: 7,
-	costs: [5000, 7000, 9000, 11000, 13000, 15000],
-});
+if (0) {
+	corelib.upgrades.registerTab({
+		id: "portals",
+		name: "Portals",
+		requirement: {
+			tech: "Portal",
+		},
+	});
+	corelib.upgrades.registerCategory({
+		tabID: "portals",
+		id: "portals",
+		name: "Portals",
+	});
+	corelib.upgrades.registerUpgrade({
+		tabID: "portals",
+		categoryID: "portals",
+		id: "count",
+		name: "Portal Count",
+		description: "Increases the number of portal channels you can use.",
+		maxLevel: 7,
+		costs: [5000, 7000, 9000, 11000, 13000, 15000],
+	});
+}

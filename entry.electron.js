@@ -1,13 +1,13 @@
 // ---------------------------------------- ELEMENTS ----------------------------------------
 
-if (0) {
-	// These dont work
-	corelib.elements.registerBasicRecipe("Sand", "Petalium", "Redsand", "Redsand");
+if (1) {
+
+	corelib.elements.registerBasicRecipe("Sand", "Petalium", "Sandium", "Sandium");
 	corelib.elements.registerBasicRecipe("WetSand", "Petalium", "Sand", "Empty", false);
 
-	// corelib.elements.registerPressRecipe("Gold", [["Sand", 1], ["Water", 0.5], ["Sandium", 1]])
-	// corelib.elements.registerPressRecipe("Sandium", [["Gold", 1]], 5)
-	// corelib.elements.registerConveyorBeltIgnores("Sand")
+	corelib.elements.registerPressRecipe("Gold", [["Sand", 1], ["Water", 0.5], ["Sandium", 1]])
+	corelib.elements.registerPressRecipe("Sandium", [["Gold", 1]], 5)
+	corelib.elements.registerConveyorBeltIgnores("Sand")
 
 	// corelib.elements.registerSoil({
 	// 	id: "TestingSoil",

@@ -5,12 +5,12 @@ if (0) {
 		// `Portal` must match the block id
 		// useState will trigger a UI reload when set is called with a new value
 		let [val, set] = React.useState(state.store.options.portalConfig?.channel ?? 1);
-	
+
 		// Data returned here is passed into `blockIDConfigUI` under `extra`
 		// And is also used to determine width and height of configUI
 		return { width: "200px", height: "60px", val, set };
-	};
-	
+	}
+
 	function blockPortalConfigUI({ extra }) {
 		// `Portal` must match the block id
 		return React.createElement(
@@ -34,8 +34,8 @@ if (0) {
 				}),
 			),
 		);
-	};
-	
+	}
+
 	globalThis.blockPortalPreConfigUI = blockPortalPreConfigUI;
 	globalThis.blockPortalConfigUI = blockPortalConfigUI;
 }
@@ -58,7 +58,7 @@ if (0) {
 		["Foundation", 32, 164, 1, 3],
 		["Foundation", 76, 164, 1, 3],
 	];
-	
+
 	function spawnBlockRange(e) {
 		// [ type, x, y, dir, length ]
 		console.log(`Spawning ${e}`);
@@ -70,13 +70,13 @@ if (0) {
 			corelib.simulation.spawnBlock(x, y, e[0]);
 		}
 	}
-	
+
 	fluxloaderAPI.events.on("fl:scene-loaded", (scene) => {
 		if (scene === "newgame" || scene === "loadgame") {
 			console.log("Spawning blocks for testmod...");
-	
+
 			blockSpawns.forEach((s) => spawnBlockRange(s));
-	
+
 			setInterval(() => {
 				corelib.simulation.spawnParticle(500, 500, "Water");
 			}, 16);

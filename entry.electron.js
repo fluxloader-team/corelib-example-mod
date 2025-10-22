@@ -1,11 +1,13 @@
 // ---------------------------------------- ELEMENTS ----------------------------------------
 
 if (0) {
-	corelib.elements.registerBasicRecipe("Sand", "Petalium", "Redsand", "Redsand")
-	corelib.elements.registerBasicRecipe("WetSand", "Petalium", "Sand", "Empty", false)
-	corelib.elements.registerPressRecipe("Gold", [["Sand", 1], ["Water", 0.5], ["Sandium", 1]])
-	corelib.elements.registerPressRecipe("Sandium", [["Gold", 1]], 5)
-	corelib.elements.registerConveyorBeltIgnores("Sand")
+	// These dont work
+	corelib.elements.registerBasicRecipe("Sand", "Petalium", "Redsand", "Redsand");
+	corelib.elements.registerBasicRecipe("WetSand", "Petalium", "Sand", "Empty", false);
+
+	// corelib.elements.registerPressRecipe("Gold", [["Sand", 1], ["Water", 0.5], ["Sandium", 1]])
+	// corelib.elements.registerPressRecipe("Sandium", [["Gold", 1]], 5)
+	// corelib.elements.registerConveyorBeltIgnores("Sand")
 
 	// corelib.elements.registerSoil({
 	// 	id: "TestingSoil",
@@ -39,32 +41,32 @@ if (1) {
 		id: "wedge",
 		name: "Wedge Block",
 		description: "A simple yet versatile wedge block",
+		imagePath: "assets/wedgeRight",
 		shape: [[10, 0, 0, 0], [3, 10, 0, 0], [3, 3, 0, 0], [3, 0, 0, 0]],
 		angles: [0],
-		imagePath: "assets/wedgeRight.png",
 		singleBuild: true,
 		unlockedByDefault: true
 	});
 	corelib.blocks.registerVariant({
 		parentId: "wedge",
 		suffix: "Left",
+		imagePath: "assets/wedgeLeft",
 		shape: [[0, 0, 0, 9], [0, 0, 9, 3], [0, 0, 3, 3], [0, 0, 0, 3]],
 		angles: [-180, 180],
-		imagePath: "assets/wedgeLeft.png"
 	});
 	corelib.blocks.registerVariant({
 		parentId: "wedge",
 		suffix: "Up",
+		imagePath: "assets/wedgeUp",
 		shape: [[3, 3, 3, 3], [0, 3, 3, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
-		angles: [90],
-		imagePath: "assets/wedgeUp.png"
+		angles: [90]
 	});
 	corelib.blocks.registerVariant({
 		parentId: "wedge",
 		suffix: "Down",
+		imagePath: "assets/wedgeDown",
 		shape: [[0, 0, 0, 0], [0, 0, 0, 0], [0, 9, 10, 0], [9, 3, 3, 10]],
-		angles: [-90],
-		imagePath: "assets/wedgeDown.png"
+		angles: [-90]
 	});
 }
 

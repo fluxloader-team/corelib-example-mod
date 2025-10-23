@@ -1,9 +1,8 @@
 // ---------------------------------------- ELEMENTS ----------------------------------------
 
-if (0) {
-	// These dont work
-	corelib.elements.registerBasicRecipe("Sand", "Petalium", "Redsand", "Redsand");
-	corelib.elements.registerBasicRecipe("WetSand", "Petalium", "Sand", "Empty", false);
+if (1) {
+	corelib.elements.registerBasicRecipe({ inputTop: "Sand", inputBottom: "Petalium", outputTop: "Sandium", outputBottom: "Sandium" });
+	corelib.elements.registerBasicRecipe({ inputTop: "WetSand", inputBottom: "Petalium", outputTop: "Sand", outputBottom: "Empty", bothWays: false });
 
 	// corelib.elements.registerPressRecipe("Gold", [["Sand", 1], ["Water", 0.5], ["Sandium", 1]])
 	// corelib.elements.registerPressRecipe("Sandium", [["Gold", 1]], 5)

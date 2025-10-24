@@ -1,88 +1,68 @@
 // ---------------------------------------- BLOCKS ----------------------------------------
 
-if (0) {
-	function blockPortalPreConfigUI({ state }) {
-		// `Portal` must match the block id
-		// useState will trigger a UI reload when set is called with a new value
-		let [val, set] = React.useState(state.store.options.portalConfig?.channel ?? 1);
+// Returns some values that are put into "extra" in the main config function
+// "width" and "height" are also used to define the size of the UI
+function blockspawnerPreConfigUI({ state }) {
+	let [val, set] = React.useState(state.store.options.spawnerConfig?.howCoolAreYou ?? 1);
 
-		// Data returned here is passed into `blockIDConfigUI` under `extra`
-		// And is also used to determine width and height of configUI
-		return { width: "200px", height: "60px", val, set };
-	}
+	// Data returned here is passed into `blockIDConfigUI` under `extra`
+	// And is also used to determine width and height of configUI
+	return { width: "300px", height: "100px", howCoolAreYou: { val, set } };
+}
 
-	function blockPortalConfigUI({ extra }) {
-		// `Portal` must match the block id
-		return React.createElement(
+// Returns a react element that is shown in the UI
+function blockspawnerConfigUI({ extra }) {
+	return React.createElement(
+		"div",
+		{},
+		React.createElement(
 			"div",
-			{},
-			React.createElement(
-				"div",
-				{ className: "flex items-center space-x-2" },
-				React.createElement("label", { htmlFor: "portal_channel", className: "text-white text-sm" }, "Portal channel"),
-				React.createElement("input", {
-					type: "number",
-					id: "portal_channel",
-					value: extra.val,
-					min: 1,
-					max: 16,
-					onChange: (e) => {
-						const i = parseInt(e.target.value, 10);
-						extra.set(i);
-					},
-					className: "text-center text-black",
-				}),
-			),
-		);
-	}
-
-	globalThis.blockPortalPreConfigUI = blockPortalPreConfigUI;
-	globalThis.blockPortalConfigUI = blockPortalConfigUI;
+			{ className: "flex items-center space-x-2" },
+			React.createElement("label", { htmlFor: "portal_channel", className: "text-white text-sm" }, "How Cool Are You?"),
+			React.createElement("input", {
+				type: "number",
+				id: "portal_channel",
+				value: extra.howCoolAreYou.val,
+				min: 1,
+				max: 5,
+				onChange: (e) => {
+					const i = parseInt(e.target.value, 10);
+					extra.howCoolAreYou.set(i);
+				},
+				className: "text-center text-black",
+			}),
+		),
+	);
 }
 
-// ---------------------------------------- SIMULATION ----------------------------------------
+// For a block with { id: X, ...hasConfigMenu: true } you need block{X}PreConfigUI and block{X}ConfigUI
+globalThis.blockspawnerPreConfigUI = blockspawnerPreConfigUI;
+globalThis.blockspawnerConfigUI = blockspawnerConfigUI;
 
-if (0) {
-	const blockSpawns = [
-		["Pipe", 40, 92, 0, 6],
-		["Pipe", 40, 96, 1, 18],
-		["Pipe", 40, 168, 0, 2],
-		["Pump", 40, 92, 0, 6],
-		["LiquidVent", 40, 168, 0, 2],
-		["Pipe", 8, 8, 0, 12],
-		["Pipe", 48, 8, 0, 2],
-		["Pipe", 8, 8, 1, 138],
-		["Pipe", 8, 552, 1, 2],
-		["Pump", 8, 552, 1, 2],
-		["LiquidVent", 48, 8, 0, 2],
-		["Foundation", 32, 164, 1, 3],
-		["Foundation", 76, 164, 1, 3],
-	];
+// For a block with { id: X, ...tickInterval: Y } you can listen with corelib:block-{X}
+fluxloaderAPI.events.on("corelib:block-spawner", (block) => {
+	if (globalThis.allParticleIds === undefined) return;
+	
+	for (let x = 0; x < 2; x++) {
+		const choice = Math.floor(Math.random() * globalThis.allParticleIds.length);
+		const particleId = globalThis.allParticleIds[choice];
+		corelib.simulation.spawnParticle({ x: block.x + 1 + x, y: block.y + 1, id: particleId });
+	}
+});
 
-	function spawnBlockRange(e) {
-		// [ type, x, y, dir, length ]
-		console.log(`Spawning ${e}`);
-		for (let i = 0; i < e[4]; i++) {
-			let x = e[1];
-			let y = e[2];
-			if (e[3] == 0) x = x + i * 4;
-			else y = y + i * 4;
-			corelib.simulation.spawnBlock(x, y, e[0]);
+// ---------------------------------------- SCHEDULES ----------------------------------------
+
+fluxloaderAPI.events.on("fl:scene-loaded", (scene) => {
+	fluxloaderAPI.gameInstance.state.store.options.spawnerConfig ??= { howCoolAreYou: 1 };
+	globalThis.allParticleIds = Object.keys(corelib.exposed.named.particles).map(p => Number.parseInt(p)).filter(p => Number.isInteger(p) && p != 9);
+});
+
+fluxloaderAPI.events.on("corelib:schedule-exampleRain", () => {
+	// if (fluxloaderAPI.gameInstance.store)
+	for (let x = 540; x <= 600; x++) {
+		if (Math.random() < 0.01) {
+			const offset = Math.floor(Math.random() * 15);
+			corelib.simulation.spawnParticle({ x, y: 540 + offset, id: "Water" });
 		}
 	}
-
-	fluxloaderAPI.events.on("fl:scene-loaded", (scene) => {
-		if (scene === "newgame" || scene === "loadgame") {
-			console.log("Spawning blocks for testmod...");
-
-			blockSpawns.forEach((s) => spawnBlockRange(s));
-
-			setInterval(() => {
-				corelib.simulation.spawnParticle(500, 500, "Water");
-			}, 16);
-		}
-		fluxloaderAPI.gameInstance.state.store.options.portalConfig ??= {
-			channel: 1,
-		};
-	});
-}
+});

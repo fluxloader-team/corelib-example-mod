@@ -73,15 +73,17 @@ corelib.blocks.register({
 	description: "A random particle spawner.",
 	imagePath: "assets/spawner",
 	shape: [
-		[0, 0, 0, 0],
-		[0, 0, 0, 0],
-		[0, 0, 0, 0],
-		[0, 0, 0, 0],
+		[3, 3, 3, 3],
+		[3, 0, 0, 3],
+		[3, 0, 0, 3],
+		[3, 0, 0, 3],
 	],
 	angles: [0],
 	singleBuild: true,
-	// hasConfigMenu: true,
-	animationDelay: 500
+	hasConfigMenu: true,
+	animationInterval: 500,
+	unlockedByDefault: true,
+	tickInterval: 100
 });
 
 // ---------------------------------------- TECH ----------------------------------------
@@ -127,3 +129,7 @@ corelib.upgrades.registerUpgrade({
 	maxLevel: 5,
 	costs: [100, 200, 300, 400, 500],
 });
+
+// ---------------------------------------- SCHEDULES ----------------------------------------
+
+corelib.schedules.register({ id: "exampleRain", interval: 16 });

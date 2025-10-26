@@ -7,21 +7,26 @@ function blockspawnerPreConfigUI({ state }) {
 
 	// Data returned here is passed into `blockIDConfigUI` under `extra`
 	// And is also used to determine width and height of configUI
-	return { width: "300px", height: "100px", howCoolAreYou: { val, set } };
+	return {
+		width: "300px",
+		// If height isn't specified, the UI will set it to auto
+		// height: "100px",
+		howCoolAreYou: { val, set },
+	};
 }
 
 // Returns a react element that is shown in the UI
-function blockspawnerConfigUI({ extra }) {
+function blockspawnerConfigUI({ extra, closeConfig }) {
 	return React.createElement(
 		"div",
 		{},
 		React.createElement(
 			"div",
 			{ className: "flex items-center space-x-2" },
-			React.createElement("label", { htmlFor: "portal_channel", className: "text-white text-sm" }, "How Cool Are You?"),
+			React.createElement("label", { htmlFor: "coolness", className: "text-white text-sm" }, "How Cool Are You?"),
 			React.createElement("input", {
 				type: "number",
-				id: "portal_channel",
+				id: "coolness",
 				value: extra.howCoolAreYou.val,
 				min: 1,
 				max: 5,
@@ -31,6 +36,21 @@ function blockspawnerConfigUI({ extra }) {
 				},
 				className: "text-center text-black",
 			}),
+		),
+		React.createElement(
+			"button",
+			{
+				// Some basic class style the game uses
+				className: "px-3 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-md transition-colors duration-200 text-sm",
+				onClick: () => {
+					// `closeConfig` will set `state.store.options.{id}Config` to whatever is passed here
+					// it will also close the menu, and select the block for the player to place
+					closeConfig({
+						howCoolAreYou: extra.howCoolAreYou.val,
+					});
+				},
+			},
+			"Confirm",
 		),
 	);
 }
@@ -42,7 +62,7 @@ globalThis.blockspawnerConfigUI = blockspawnerConfigUI;
 // For a block with { id: X, ...tickInterval: Y } you can listen with corelib:block-{X}
 fluxloaderAPI.events.on("corelib:block-spawner", (block) => {
 	if (globalThis.allParticleIds === undefined) return;
-	
+
 	for (let x = 0; x < 2; x++) {
 		const choice = Math.floor(Math.random() * globalThis.allParticleIds.length);
 		const particleId = globalThis.allParticleIds[choice];
@@ -54,7 +74,9 @@ fluxloaderAPI.events.on("corelib:block-spawner", (block) => {
 
 fluxloaderAPI.events.on("fl:scene-loaded", (scene) => {
 	fluxloaderAPI.gameInstance.state.store.options.spawnerConfig ??= { howCoolAreYou: 1 };
-	globalThis.allParticleIds = Object.keys(corelib.exposed.named.particles).map(p => Number.parseInt(p)).filter(p => Number.isInteger(p) && p != 9);
+	globalThis.allParticleIds = Object.keys(corelib.exposed.named.particles)
+		.map((p) => Number.parseInt(p))
+		.filter((p) => Number.isInteger(p) && p != 9);
 });
 
 fluxloaderAPI.events.on("corelib:schedule-exampleRain", () => {

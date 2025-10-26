@@ -3,9 +3,22 @@
 corelib.elements.registerBasicRecipe({ inputTop: "Sand", inputBottom: "Petalium", outputTop: "Sandium", outputBottom: "Sandium" });
 corelib.elements.registerBasicRecipe({ inputTop: "WetSand", inputBottom: "Petalium", outputTop: "Sand", outputBottom: "Empty", bothWays: false });
 
-corelib.elements.registerPressRecipe({ input: "Gold", outputs: [["Sand", 1], ["Water", 0.5], ["Sandium", 1]] });
+corelib.elements.registerPressRecipe({
+	input: "Gold",
+	outputs: [
+		["Sand", 1],
+		["Water", 0.5],
+		["Sandium", 1],
+	],
+});
 corelib.elements.registerPressRecipe({ input: "Sandium", outputs: [["Gold", 1]] });
-corelib.elements.registerPressRecipe({ input: "Sand", outputs: [["Gold", 0.5], ["WetSand", 1]] });
+corelib.elements.registerPressRecipe({
+	input: "Sand",
+	outputs: [
+		["Gold", 0.5],
+		["WetSand", 1],
+	],
+});
 
 corelib.elements.registerConveyorBeltIgnores("Sand");
 
@@ -83,7 +96,7 @@ corelib.blocks.register({
 	hasConfigMenu: true,
 	animationInterval: 500,
 	unlockedByDefault: true,
-	tickInterval: 100
+	tickInterval: 100,
 });
 
 // ---------------------------------------- TECH ----------------------------------------
@@ -132,4 +145,4 @@ corelib.upgrades.registerUpgrade({
 
 // ---------------------------------------- SCHEDULES ----------------------------------------
 
-corelib.schedules.register({ id: "exampleRain", interval: 16 });
+corelib.schedules.register("exampleRain", 16);

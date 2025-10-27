@@ -76,7 +76,8 @@ fluxloaderAPI.events.on("fl:scene-loaded", (scene) => {
 	fluxloaderAPI.gameInstance.state.store.options.spawnerConfig ??= { howCoolAreYou: 1 };
 	globalThis.allParticleIds = Object.keys(corelib.exposed.named.particles)
 		.map((p) => Number.parseInt(p))
-		.filter((p) => Number.isInteger(p) && p != 9);
+		// 2 and 9 are "meta" particles 'Particle' and 'Shake'
+		.filter((p) => Number.isInteger(p) && p != 2 && p != 9);
 });
 
 fluxloaderAPI.events.on("corelib:schedule-exampleRain", () => {

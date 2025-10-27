@@ -139,7 +139,7 @@ corelib.upgrades.registerUpgrade({
 	id: "spawnerOutputRate",
 	name: "Output Rate",
 	description: "Increase the rate of output of all spawners.",
-	maxLevel: 5,
+	maxLevel: 6,
 	costs: [100, 200, 300, 400, 500],
 });
 

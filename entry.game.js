@@ -8,9 +8,8 @@ function blockspawnerPreConfigUI({ state }) {
 	// Data returned here is passed into `blockIDConfigUI` under `extra`
 	// And is also used to determine width and height of configUI
 	return {
-		width: "300px",
-		// If height isn't specified, the UI will set it to auto
-		// height: "100px",
+		width: "250px",
+		// height: "100px", If height isn't specified, the UI will set it to auto
 		howCoolAreYou: { val, set },
 	};
 }
@@ -22,7 +21,7 @@ function blockspawnerConfigUI({ extra, closeConfig }) {
 		{},
 		React.createElement(
 			"div",
-			{ className: "flex items-center space-x-2" },
+			{ className: "flex items-center space-x-2 mx-auto justify-center mt-2" },
 			React.createElement("label", { htmlFor: "coolness", className: "text-white text-sm" }, "How Cool Are You?"),
 			React.createElement("input", {
 				type: "number",
@@ -41,10 +40,11 @@ function blockspawnerConfigUI({ extra, closeConfig }) {
 			"button",
 			{
 				// Some basic class style the game uses
-				className: "px-3 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-md transition-colors duration-200 text-sm",
+				className: "px-3 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-md transition-colors duration-200 text-sm block mt-2 mx-auto",
 				onClick: () => {
 					// `closeConfig` will set `state.store.options.{id}Config` to whatever is passed here
 					// it will also close the menu, and select the block for the player to place
+					log("info", "corelibexamplemod", `Block Spawner Configured: How Cool Are You = ${extra.howCoolAreYou.val}`);
 					closeConfig({
 						howCoolAreYou: extra.howCoolAreYou.val,
 					});

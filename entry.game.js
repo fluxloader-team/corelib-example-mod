@@ -80,7 +80,8 @@ fluxloaderAPI.events.on("fl:scene-loaded", (scene) => {
 });
 
 fluxloaderAPI.events.on("corelib:schedule-exampleRain", () => {
-	// if (fluxloaderAPI.gameInstance.store)
+	if (fluxloaderAPI.gameInstance.state.store.scene.active == corelib.exposed.raw.x.MainMenu) return;
+
 	for (let x = 540; x <= 600; x++) {
 		if (Math.random() < 0.01) {
 			const offset = Math.floor(Math.random() * 15);

@@ -1,3 +1,5 @@
+/** @typedef {import('../corelib/entry.game.js')} */
+
 // ---------------------------------------- BLOCKS ----------------------------------------
 
 // Returns some values that are put into "extra" in the main config function

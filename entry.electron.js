@@ -1,3 +1,5 @@
+/** @typedef {import('../corelib/entry.electron.js')} */
+
 // ---------------------------------------- ELEMENTS ----------------------------------------
 
 corelib.elements.registerBasicRecipe({ inputTop: "Sand", inputBottom: "Petalium", outputTop: "Sandium", outputBottom: "Sandium" });

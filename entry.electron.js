@@ -22,6 +22,17 @@ corelib.elements.registerPressRecipe({
 	],
 });
 
+corelib.elements.registerGrowerRecipe({ input: "Gold", output: "Sandium" });
+
+corelib.elements.registerShakerRecipe({
+	input: "Sandium",
+	outputAbove: [["Slag", 1]],
+	outputBelow: [
+		["Gold", 0.25],
+		["Water", 1],
+	],
+});
+
 corelib.elements.registerConveyorBeltIgnores("Sand");
 
 // ---------------------------------------- BLOCKS ----------------------------------------

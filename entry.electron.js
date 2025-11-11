@@ -22,7 +22,7 @@ corelib.elements.registerPressRecipe({
 	],
 });
 
-corelib.elements.registerGrowerRecipe({ input: "Gold", output: "Sandium" });
+corelib.elements.registerGrowerRecipe({ input: "Spore", output: "Sandium" });
 
 corelib.elements.registerShakerRecipe({
 	input: "Sandium",

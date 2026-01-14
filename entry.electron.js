@@ -6,26 +6,30 @@ corelib.elements.registerSoil({
 	id: "AlternateFluxite",
 	name: "Alternate Fluxite",
 	hp: 20,
-	outputElement: "Null",
 	chanceForOutput: 0,
 	colorHSL: [300, 100, 20],
+	onlyRocketBreakable: true,
 });
 corelib.elements.registerSoil({
 	id: "WaterySoil",
 	name: "Watery Soil",
 	hp: 1,
-	outputElement: "SaltWater",
+	outputElement: "PowderyWater",
 	chanceForOutput: 1,
 	colorHSL: [300, 20, 20],
 });
 
 corelib.elements.registerElement({
-	id: "SaltWater",
-	name: "SaltWater",
-	colors: [[71, 156, 209, 50],[77, 156, 209, 50]],
+	id: "PowderyWater",
+	name: "Powdery Water",
+	colors: [
+		[72, 156, 209, 50],
+		[77, 156, 209, 50],
+	],
 	density: 110,
 	interactsWithHoverText: ["🚫"],
-	matterType: "Liquid",
+	matterType: "Solid",
+	addToFilterList: false,
 });
 
 // ---------------------------------------- RECIPES ----------------------------------------

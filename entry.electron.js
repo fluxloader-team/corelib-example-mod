@@ -1,9 +1,37 @@
 // ---------------------------------------- ELEMENTS ----------------------------------------
 
-corelib.elements.registerBasicRecipe({ inputTop: "Sand", inputBottom: "Petalium", outputTop: "Sandium", outputBottom: "Sandium" });
-corelib.elements.registerBasicRecipe({ inputTop: "WetSand", inputBottom: "Petalium", outputTop: "Sand", outputBottom: "Empty", bothWays: false });
+corelib.elements.registerSoil({
+	id: "AlternateFluxite",
+	name: "Alternate Fluxite",
+	hp: 20,
+	outputElement: "Null",
+	chanceForOutput: 0,
+	colorHSL: [300, 100, 20],
+});
+corelib.elements.registerSoil({
+	id: "WaterySoil",
+	name: "Watery Soil",
+	hp: 1,
+	outputElement: "SaltWater",
+	chanceForOutput: 1,
+	colorHSL: [300, 20, 20],
+});
 
-corelib.elements.registerPressRecipe({
+corelib.elements.registerElement({
+	id: "SaltWater",
+	name: "SaltWater",
+	colors: [[71, 156, 209, 50],[77, 156, 209, 50]],
+	density: 110,
+	interactsWithHoverText: ["🚫"],
+	matterType: "Liquid",
+});
+
+// ---------------------------------------- RECIPES ----------------------------------------
+
+corelib.recipes.registerBasicRecipe({ inputTop: "Sand", inputBottom: "Petalium", outputTop: "Sandium", outputBottom: "Sandium" });
+corelib.recipes.registerBasicRecipe({ inputTop: "WetSand", inputBottom: "Petalium", outputTop: "Sand", outputBottom: "Empty", bothWays: false });
+
+corelib.recipes.registerPressRecipe({
 	input: "Gold",
 	outputs: [
 		["Sand", 1],
@@ -11,8 +39,8 @@ corelib.elements.registerPressRecipe({
 		["Sandium", 1],
 	],
 });
-corelib.elements.registerPressRecipe({ input: "Sandium", outputs: [["Gold", 1]] });
-corelib.elements.registerPressRecipe({
+corelib.recipes.registerPressRecipe({ input: "Sandium", outputs: [["Gold", 1]] });
+corelib.recipes.registerPressRecipe({
 	input: "Sand",
 	outputs: [
 		["Gold", 0.5],
@@ -20,7 +48,7 @@ corelib.elements.registerPressRecipe({
 	],
 });
 
-corelib.elements.registerConveyorBeltIgnores("Sand");
+corelib.recipes.registerConveyorBeltIgnores("Sand");
 
 // ---------------------------------------- BLOCKS ----------------------------------------
 

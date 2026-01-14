@@ -1,3 +1,5 @@
+/** @typedef {import('../corelib/entry.electron.js')} */
+
 // ---------------------------------------- ELEMENTS ----------------------------------------
 
 corelib.elements.registerSoil({
@@ -45,6 +47,17 @@ corelib.recipes.registerPressRecipe({
 	outputs: [
 		["Gold", 0.5],
 		["WetSand", 1],
+	],
+});
+
+corelib.recipes.registerGrowerRecipe({ input: "Spore", output: "Sandium" });
+
+corelib.recipes.registerShakerRecipe({
+	input: "Sandium",
+	outputAbove: [["Slag", 1]],
+	outputBelow: [
+		["Gold", 0.25],
+		["Water", 1],
 	],
 });
 

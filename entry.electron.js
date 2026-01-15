@@ -2,10 +2,46 @@
 
 // ---------------------------------------- ELEMENTS ----------------------------------------
 
-corelib.elements.registerBasicRecipe({ inputTop: "Sand", inputBottom: "Petalium", outputTop: "Sandium", outputBottom: "Sandium" });
-corelib.elements.registerBasicRecipe({ inputTop: "WetSand", inputBottom: "Petalium", outputTop: "Sand", outputBottom: "Empty", bothWays: false });
+corelib.elements.registerSoil({
+	id: "AlternateFluxite",
+	name: "Alternate Fluxite",
+	hp: 1,
+	chanceForOutput: 0,
+	colorHSL: [300, 100, 20],
+	onlyRocketBreakable: true,
+});
 
-corelib.elements.registerPressRecipe({
+corelib.elements.registerSoil({
+	id: "WaterySoil",
+	name: "Watery Soil",
+	hp: 1,
+	outputElement: "PowderyWater",
+	chanceForOutput: 1,
+	colorHSL: [300, 20, 20],
+});
+
+corelib.elements.registerElement({
+	id: "PowderyWater",
+	name: "Powdery Water",
+	colors: [
+		[72, 156, 209, 50],
+		[77, 156, 209, 50],
+	],
+	density: 110,
+	interactsWithHoverText: ["🚫"],
+	matterType: "Solid",
+	addToFilterList: false,
+});
+
+// ---------------------------------------- RECIPES ----------------------------------------
+
+corelib.recipes.registerBasicRecipe({ inputTop: "Fire", inputBottom: "PowderyWater", outputTop: "Steam", outputBottom: "Water", bothWays: true });
+
+corelib.recipes.registerBasicRecipe({ inputTop: "WetSand", inputBottom: "Petalium", outputTop: "Sand", outputBottom: "Empty", bothWays: false });
+
+corelib.recipes.registerBasicRecipe({ inputTop: "Gold", inputBottom: "Petalium", outputTop: "Sandium", outputBottom: "Sandium" });
+
+corelib.recipes.registerPressRecipe({
 	input: "Gold",
 	outputs: [
 		["Sand", 1],
@@ -13,8 +49,10 @@ corelib.elements.registerPressRecipe({
 		["Sandium", 1],
 	],
 });
-corelib.elements.registerPressRecipe({ input: "Sandium", outputs: [["Gold", 1]] });
-corelib.elements.registerPressRecipe({
+
+corelib.recipes.registerPressRecipe({ input: "Sandium", outputs: [["Gold", 1]] });
+
+corelib.recipes.registerPressRecipe({
 	input: "Sand",
 	outputs: [
 		["Gold", 0.5],
@@ -22,9 +60,11 @@ corelib.elements.registerPressRecipe({
 	],
 });
 
-corelib.elements.registerGrowerRecipe({ input: "Spore", output: "Sandium" });
+corelib.recipes.registerGrowerRecipe({ input: "Spore", output: "Sandium" });
 
-corelib.elements.registerShakerRecipe({
+corelib.recipes.registerGrowerRecipe({ input: "PowderyWater", output: "Water" });
+
+corelib.recipes.registerShakerRecipe({
 	input: "Sandium",
 	outputAbove: [["Slag", 1]],
 	outputBelow: [
@@ -33,7 +73,7 @@ corelib.elements.registerShakerRecipe({
 	],
 });
 
-corelib.elements.registerConveyorBeltIgnores("Sand");
+corelib.recipes.registerConveyorBeltIgnores("Sand");
 
 // ---------------------------------------- BLOCKS ----------------------------------------
 

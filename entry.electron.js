@@ -35,12 +35,11 @@ corelib.elements.registerElement({
 
 // ---------------------------------------- RECIPES ----------------------------------------
 
-corelib.recipes.registerBasicRecipe({ inputTop: "Flame", inputBottom: "PowderyWater", outputTop: "Water", outputBottom: "Water" });
+corelib.recipes.registerBasicRecipe({ inputTop: "Fire", inputBottom: "PowderyWater", outputTop: "Steam", outputBottom: "Water", bothWays: true });
 
 corelib.recipes.registerBasicRecipe({ inputTop: "WetSand", inputBottom: "Petalium", outputTop: "Sand", outputBottom: "Empty", bothWays: false });
 
 corelib.recipes.registerBasicRecipe({ inputTop: "Sand", inputBottom: "Petalium", outputTop: "Sandium", outputBottom: "Sandium" });
-
 
 corelib.recipes.registerPressRecipe({ input: "Gold", outputs: [ ["Sand", 1], ["Water", 0.5], ["Sandium", 1] ] });
 
@@ -49,6 +48,8 @@ corelib.recipes.registerPressRecipe({ input: "Sandium", outputs: [["Gold", 1]] }
 corelib.recipes.registerPressRecipe({ input: "Sand", outputs: [ ["Gold", 0.5], ["WetSand", 1] ] });
 
 corelib.recipes.registerGrowerRecipe({ input: "Spore", output: "Sandium" });
+
+corelib.recipes.registerGrowerRecipe({ input: "PowderyWater", output: "Water" });
 
 corelib.recipes.registerShakerRecipe({ input: "Sandium", outputAbove: [["Slag", 1]], outputBelow: [ ["Gold", 0.25], ["Water", 1], ] });
 

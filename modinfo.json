@@ -1,11 +1,11 @@
 {
 	"modID": "corelibexamplemod",
 	"name": "Core Lib Example Mod",
-	"version": "2.0.0",
+	"version": "3.0.0",
 	"author": "Fluxloader Team",
 	"shortDescription": "A mod to test corelib's functionality",
 	"fluxloaderVersion": "^2.0.0",
-	"dependencies": { "corelib": "^2.0.0" },
+	"dependencies": { "corelib": "^3.0.0" },
 	"tags": ["test"],
 	"electronEntrypoint": "entry.electron.js",
 	"gameEntrypoint": "entry.game.js",

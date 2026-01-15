@@ -5,7 +5,7 @@
 corelib.elements.registerSoil({
 	id: "AlternateFluxite",
 	name: "Alternate Fluxite",
-	hp: 20,
+	hp: 1,
 	chanceForOutput: 0,
 	colorHSL: [300, 100, 20],
 	onlyRocketBreakable: true,

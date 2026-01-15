@@ -39,7 +39,7 @@ corelib.recipes.registerBasicRecipe({ inputTop: "Fire", inputBottom: "PowderyWat
 
 corelib.recipes.registerBasicRecipe({ inputTop: "WetSand", inputBottom: "Petalium", outputTop: "Sand", outputBottom: "Empty", bothWays: false });
 
-corelib.recipes.registerBasicRecipe({ inputTop: "Sand", inputBottom: "Petalium", outputTop: "Sandium", outputBottom: "Sandium" });
+corelib.recipes.registerBasicRecipe({ inputTop: "Gold", inputBottom: "Petalium", outputTop: "Sandium", outputBottom: "Sandium" });
 
 corelib.recipes.registerPressRecipe({
 	input: "Gold",

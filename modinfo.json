@@ -8,5 +8,6 @@
 	"dependencies": { "corelib": "^2.0.0" },
 	"tags": ["test"],
 	"electronEntrypoint": "entry.electron.js",
-	"gameEntrypoint": "entry.game.js"
+	"gameEntrypoint": "entry.game.js",
+	"workerEntrypoint": "entry.worker.js"
 }
